@@ -2,39 +2,33 @@ plugins {
     id 'maven-publish'
     id 'java-library'
     id 'kotlin'
-    id 'groovy'
+    id 'java-gradle-plugin'
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-}
-
-//指定源码/资源路径
-sourceSets {
-    main {
-        java {
-            srcDir 'src/main/java'
-            //srcDir 'src/main/kotlin'
-        }
-        groovy {
-            srcDir 'src/main/groovy'
-        }
-        resources {
-            srcDir 'src/main/resources'
+//---------------------------------自定义插件----------------------------------
+//添加一个名为GreetingPlugin的插件
+class GreetingPlugin implements Plugin<Project> {
+    void apply(Project project) {
+        project.task('hello') {
+            doLast {
+                println 'Hello from the GreetingPlugin'
+            }
         }
     }
 }
+
+// Apply the plugin
+apply plugin: GreetingPlugin
+//---------------------------------自定义插件----------------------------------
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.tools.build:gradle:3.5.0"
     implementation gradleApi()
-    //groovy sdk
-    implementation localGroovy()
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.30"
-    implementation group: 'org.ow2.asm', name: 'asm', version: '7.2'
-    implementation group: 'org.ow2.asm', name: 'asm-commons', version: '7.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0"
+    implementation group: 'org.ow2.asm', name: 'asm', version: '9.4'
+    implementation group: 'org.ow2.asm', name: 'asm-commons', version: '9.4'
 }
 
 publishing {
@@ -53,4 +47,9 @@ publishing {
             url = layout.buildDirectory.dir('repo')
         }
     }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
