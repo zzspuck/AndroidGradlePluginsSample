@@ -10,7 +10,7 @@ gradlePlugin {
     plugins {
         modularPlugin {
             // Plugin id.
-            id = 'com.zzs.plugin'
+            id = 'com.zzs.buildSrcPlugin'
             // Plugin implementation.
             implementationClass = 'com.zzs.plugin.JavaGreetingPlugin'
         }
