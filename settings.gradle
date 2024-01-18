@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "AndroidGradlePluginsSample"
 include ':app'
 include ':CustomGradlePlugin'
+include ':StandaloneGradlePlugin'

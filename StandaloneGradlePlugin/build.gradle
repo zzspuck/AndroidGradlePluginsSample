@@ -1,0 +1,40 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+}
+
+gradlePlugin {
+    plugins {
+        standaloneGradlePlugins {
+            id = "greeting-standalone"
+            implementationClass = 'com.zzs.plugins.GreetingStandaloneGradlePlugins'
+        }
+    }
+}
+
+//定义Maven仓库信息
+def MAVEN_GROUP_ID = "com.zzs.plugins"
+def MAVEN_ARTIFACT_ID = "greeting-standalone"
+def MAVEN_VERSION = "1.0.0"
+def MAVEN_NAME = "repo"
+def MAVEN_RELEASE_URL = "mavenLocal"
+def MAVEN_USERNAME = ""
+def MAVEN_PASSWORD = ""
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = MAVEN_GROUP_ID
+            artifactId = MAVEN_ARTIFACT_ID
+            version = MAVEN_VERSION
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            // change to point to your repo, e.g. http://my.org/repo
+            url = layout.buildDirectory.dir(MAVEN_NAME)
+        }
+    }
+}
