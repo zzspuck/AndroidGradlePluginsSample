@@ -12,6 +12,15 @@ gradlePlugin {
     }
 }
 
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.tools.build:gradle:3.5.0"
+    implementation gradleApi()
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0"
+    implementation group: 'org.ow2.asm', name: 'asm', version: '9.4'
+    implementation group: 'org.ow2.asm', name: 'asm-commons', version: '9.4'
+}
+
 //定义Maven仓库信息
 def MAVEN_GROUP_ID = "com.zzs.plugins"
 def MAVEN_ARTIFACT_ID = "greeting-standalone"
