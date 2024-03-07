@@ -26,7 +26,7 @@ public class TrackMethodVisitor extends AdviceAdapter {
             if (className != null && className.contains("$")) {
                 mv.visitMethodInsn(
                         Opcodes.INVOKESTATIC,
-                        Constants.tracker,
+                        com.zzs.plugins.Constants.tracker,
                         "c",
                         "(Landroid/view/View;)V",
                         false
@@ -35,7 +35,7 @@ public class TrackMethodVisitor extends AdviceAdapter {
                 mv.visitLdcInsn(className);
                 mv.visitMethodInsn(
                         Opcodes.INVOKESTATIC,
-                        Constants.tracker,
+                        com.zzs.plugins.Constants.tracker,
                         "c",
                         "(Landroid/view/View;Ljava/lang/String;)V",
                         false
