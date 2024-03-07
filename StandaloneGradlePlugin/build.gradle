@@ -16,9 +16,12 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.tools.build:gradle:3.5.0"
     implementation gradleApi()
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0"
-    implementation group: 'org.ow2.asm', name: 'asm', version: '9.4'
-    implementation group: 'org.ow2.asm', name: 'asm-commons', version: '9.4'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.9.22'
+    // 添加了这个，就可以看 Android Gradle 插件的源码了
+    implementation 'com.android.tools.build:gradle-api:8.0.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.20"
+    implementation 'org.ow2.asm:asm-commons:9.6'
+    implementation('org.ow2.asm:asm-util:9.6')
 }
 
 //定义Maven仓库信息
