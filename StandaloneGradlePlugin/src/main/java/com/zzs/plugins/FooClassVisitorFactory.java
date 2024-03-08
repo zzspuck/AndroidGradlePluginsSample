@@ -7,17 +7,19 @@ import com.android.build.api.instrumentation.InstrumentationParameters;
 
 import org.jetbrains.annotations.NotNull;
 import org.objectweb.asm.ClassVisitor;
+import org.objectweb.asm.util.TraceClassVisitor;
+import java.io.PrintWriter;
 
 public abstract class FooClassVisitorFactory implements AsmClassVisitorFactory<InstrumentationParameters.None>{
 
     @Override
     public boolean isInstrumentable(@NotNull ClassData classData) {
-        return false;
+        return classData.getClassName().startsWith("home.smart.fly.animations.ui.activity.multifragments.OneFragment");
     }
 
     @NotNull
     @Override
     public ClassVisitor createClassVisitor(@NotNull ClassContext classContext, @NotNull ClassVisitor classVisitor) {
-        return null;
+        return new TraceClassVisitor(classVisitor, new PrintWriter(System.out));
     }
 }
