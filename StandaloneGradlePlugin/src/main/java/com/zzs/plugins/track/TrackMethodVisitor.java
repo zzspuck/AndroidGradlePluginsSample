@@ -1,5 +1,7 @@
 package com.zzs.plugins.track;
 
+import com.zzs.plugins.extensions.model.Constants;
+
 import org.objectweb.asm.*;
 import org.objectweb.asm.commons.AdviceAdapter;
 
@@ -26,7 +28,7 @@ public class TrackMethodVisitor extends AdviceAdapter {
             if (className != null && className.contains("$")) {
                 mv.visitMethodInsn(
                         Opcodes.INVOKESTATIC,
-                        com.zzs.plugins.Constants.tracker,
+                        Constants.tracker,
                         "c",
                         "(Landroid/view/View;)V",
                         false
@@ -35,7 +37,7 @@ public class TrackMethodVisitor extends AdviceAdapter {
                 mv.visitLdcInsn(className);
                 mv.visitMethodInsn(
                         Opcodes.INVOKESTATIC,
-                        com.zzs.plugins.Constants.tracker,
+                        Constants.tracker,
                         "c",
                         "(Landroid/view/View;Ljava/lang/String;)V",
                         false

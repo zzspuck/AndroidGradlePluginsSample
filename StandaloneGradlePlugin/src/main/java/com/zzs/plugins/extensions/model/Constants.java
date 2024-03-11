@@ -1,4 +1,4 @@
-package com.zzs.plugins;
+package com.zzs.plugins.extensions.model;
 
 public class Constants {
 

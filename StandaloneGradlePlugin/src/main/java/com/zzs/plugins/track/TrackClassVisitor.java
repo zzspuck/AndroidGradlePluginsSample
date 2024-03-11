@@ -11,7 +11,7 @@ public class TrackClassVisitor extends ClassVisitor {
 private boolean mTrackOn;
 private boolean hack;
 private String className;
-    protected TrackClassVisitor(int api, boolean trackOn, ClassVisitor classVisitor) {
+    public TrackClassVisitor(int api, boolean trackOn, ClassVisitor classVisitor) {
         super(api, classVisitor);
         mTrackOn = trackOn;
     }

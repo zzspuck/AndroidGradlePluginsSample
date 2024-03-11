@@ -14,7 +14,7 @@ public abstract class FooClassVisitorFactory implements AsmClassVisitorFactory<I
 
     @Override
     public boolean isInstrumentable(@NotNull ClassData classData) {
-        return classData.getClassName().startsWith("home.smart.fly.animations.ui.activity.multifragments.OneFragment");
+        return classData.getClassName().startsWith(" com.example.androidgradlepluginssample.MainActivity");
     }
 
     @NotNull
