@@ -1,20 +1,29 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22"
+    }
+}
+
 plugins {
     id 'java-gradle-plugin'
     id 'maven-publish'
+    id 'kotlin'
 }
 
 gradlePlugin {
     plugins {
         standaloneGradlePlugins {
             id = "greeting-standalone"
-            implementationClass = 'com.zzs.plugins.GreetingStandaloneGradlePlugins'
+            implementationClass = 'com.zzs.plugins.GreetingStandaloneGradlePluginsKotlin'
         }
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.tools.build:gradle:3.5.0"
     implementation gradleApi()
     implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.9.22'
     // 添加了这个，就可以看 Android Gradle 插件的源码了
