@@ -1,22 +1,16 @@
-package com.zzs.plugins
+package com.cs.plugin
 
 import com.android.build.api.instrumentation.FramesComputationMode
 import com.android.build.api.instrumentation.InstrumentationScope
 import com.android.build.api.variant.AndroidComponentsExtension
-import com.cs.plugin.ConfigExtensionNew
-import com.cs.plugin.PluginHelper
 import com.zzs.plugins.methodtime.MethodTimeTransform
 import com.zzs.plugins.timecost.TimeCostTransform
+import com.zzs.plugins.ConfigExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
-public class GreetingStandaloneGradlePluginsKotlin : Plugin<Project> {
+class TestPlugin  : Plugin<Project> {
     override fun apply(project: Project) {
-
-        println()
-        println("===================================GreetingStandaloneGradlePluginsKotlin===============begin==================")
-        println()
-
         //这里appExtension获取方式与原transform api不同，可自行对比
         val appExtension = project.extensions.getByType(
             AndroidComponentsExtension::class.java

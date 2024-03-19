@@ -17,4 +17,8 @@ class MainActivity : AppCompatActivity() {
     public fun showMainActivity(){
         findViewById<TextView>(R.id.tvSubmit).text = "HA HA I CLICK MainActivity"
     }
+
+    private fun test(){
+        print("test")
+    }
 }

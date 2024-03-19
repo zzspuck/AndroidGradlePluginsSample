@@ -1,1 +1,1 @@
-there have a article https://www.yuque.com/nongxiangang/androidsample/custom-gradle-plugins-01#Wf0Fo
+参考文章 https://juejin.cn/post/7250658226412322875

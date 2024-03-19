@@ -1,7 +1,12 @@
  buildscript {
-    repositories {
-        mavenLocal()
-    }
+     repositories {
+         maven {
+             url '\\localmaven'
+         }
+       /*  maven {
+             url('StandaloneGradlePlugin/build/localmaven')
+         }*/
+     }
 
     dependencies {
         classpath 'com.zzs.plugins:greeting-standalone:1.0.0'

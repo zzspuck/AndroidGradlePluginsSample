@@ -44,3 +44,14 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
+
+TestPlugin {
+    includePackages = ['com.example.androidgradlepluginssample']
+    includeMethods = ["showMainActivity"]
+    logTag = 'Plugin-old'
+}
+TestPluginNew {
+    includePackages = ['com.example.androidgradlepluginssample']
+    includeMethods = ["showMainActivity"]
+    logTag = 'Plugin-new'
+}

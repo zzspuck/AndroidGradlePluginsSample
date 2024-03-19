@@ -1,11 +1,3 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22"
-    }
-}
 
 plugins {
     id 'java-gradle-plugin'
@@ -25,10 +17,11 @@ gradlePlugin {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation gradleApi()
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.9.22'
     // 添加了这个，就可以看 Android Gradle 插件的源码了
-    implementation 'com.android.tools.build:gradle-api:8.0.2'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.20"
+    implementation "com.android.tools.build:gradle:8.1.1"
+    implementation "com.android.tools.build:gradle-api:8.1.1"
+
+    implementation 'org.ow2.asm:asm:9.6'
     implementation 'org.ow2.asm:asm-commons:9.6'
     implementation('org.ow2.asm:asm-util:9.6')
 }
@@ -37,7 +30,7 @@ dependencies {
 def MAVEN_GROUP_ID = "com.zzs.plugins"
 def MAVEN_ARTIFACT_ID = "greeting-standalone"
 def MAVEN_VERSION = "1.0.0"
-def MAVEN_NAME = "repo"
+def MAVEN_NAME = "localmaven"
 def MAVEN_RELEASE_URL = "mavenLocal"
 def MAVEN_USERNAME = ""
 def MAVEN_PASSWORD = ""
@@ -52,10 +45,23 @@ publishing {
         }
     }
 
-    repositories {
+/*    repositories {
         maven {
             // change to point to your repo, e.g. http://my.org/repo
             url = layout.buildDirectory.dir(MAVEN_NAME)
+        }
+    }*/
+
+    repositories { RepositoryHandler handler ->
+        handler.maven { MavenArtifactRepository mavenArtifactRepository -> //正式仓库
+            url '..\\localmaven'
+            allowInsecureProtocol = true
+            if (url.toString().startsWith("http")) {
+                credentials {
+                    username = ''
+                    password = ''
+                }
+            }
         }
     }
 }
