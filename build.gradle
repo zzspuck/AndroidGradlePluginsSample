@@ -1,5 +1,7 @@
  buildscript {
      repositories {
+         mavenCentral()
+         google()
          maven {
              url '\\localmaven'
          }
@@ -9,7 +11,7 @@
      }
 
     dependencies {
-        classpath 'com.zzs.plugins:greeting-standalone:1.0.0'
+       // classpath 'com.zzs.plugins:greeting-standalone:1.0.0'
     }
  }
 

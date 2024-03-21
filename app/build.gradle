@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     // id 'com.zzs.buildSrcPlugin'
-    id 'greeting-standalone'
+   // id 'greeting-standalone'
 }
 
 android {
@@ -45,7 +45,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
 
-TestPlugin {
+/*TestPlugin {
     includePackages = ['com.example.androidgradlepluginssample']
     includeMethods = ["showMainActivity"]
     logTag = 'Plugin-old'
@@ -54,4 +54,4 @@ TestPluginNew {
     includePackages = ['com.example.androidgradlepluginssample']
     includeMethods = ["showMainActivity"]
     logTag = 'Plugin-new'
-}
+}*/
