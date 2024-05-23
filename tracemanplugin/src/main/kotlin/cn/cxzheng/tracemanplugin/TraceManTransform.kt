@@ -3,10 +3,8 @@ package cn.cxzheng.tracemanplugin
 import com.android.build.api.instrumentation.AsmClassVisitorFactory
 import com.android.build.api.instrumentation.ClassContext
 import com.android.build.api.instrumentation.ClassData
-import com.android.tools.lint.LintResourceRepository.Companion.EmptyRepository.project
 import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.Opcodes
-import java.io.File
 
 abstract class TraceManTransform() : AsmClassVisitorFactory<TraceManParameter> {
 
@@ -31,8 +29,8 @@ abstract class TraceManTransform() : AsmClassVisitorFactory<TraceManParameter> {
 
     private fun initConfig(configuration: TraceManParameter): Config {
         val config = Config()
-        config.MTraceConfigFile = configuration.traceConfigFile.get()
-        config.MIsNeedLogTraceInfo = configuration.logTraceInfo.get()
+        config.mTraceConfigFile = configuration.traceConfigFile.get()
+        config.mIsNeedLogTraceInfo = configuration.logTraceInfo.get()
         return config
     }
 
