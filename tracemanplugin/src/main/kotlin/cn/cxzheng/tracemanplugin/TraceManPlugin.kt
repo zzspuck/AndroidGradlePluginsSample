@@ -19,12 +19,17 @@ class TraceManPlugin : Plugin<Project> {
         )
         //读取配置文件
         project.extensions.create("TraceMan", TraceManConfig::class.java)
+        val extensionNew = project.extensions.getByType(
+            TraceManConfig::class.java
+        )
+        if (!extensionNew.open) {
+            // 没打开直接return
+            return
+        }
         //这里通过transformClassesWith替换了原registerTransform来注册字节码转换操作
         appExtension.onVariants { variant ->
 
-            val extensionNew = project.extensions.getByType(
-                TraceManConfig::class.java
-            )
+
             //可以通过variant来获取当前编译环境的一些信息，最重要的是可以 variant.name 来区分是debug模式还是release模式编译
             variant.instrumentation.transformClassesWith(TraceManTransform::class.java, InstrumentationScope.ALL) {
                 //配置通过指定配置的类，携带到TimeCostTransform中
@@ -32,6 +37,7 @@ class TraceManPlugin : Plugin<Project> {
                 it.open.set(extensionNew.open)
                 it.traceConfigFile.set(extensionNew.traceConfigFile)
                 it.logTraceInfo.set(extensionNew.logTraceInfo)
+                it.project.set(project)
             }
             //InstrumentationScope.ALL 配合 FramesComputationMode.COPY_FRAMES可以指定该字节码转换器在全局生效，包括第三方lib
             variant.instrumentation.setAsmFramesComputationMode(FramesComputationMode.COPY_FRAMES)
