@@ -14,7 +14,7 @@ abstract class TraceManTransform() : AsmClassVisitorFactory<TraceManParameter> {
         nextClassVisitor: ClassVisitor
     ): ClassVisitor {
 
-        return TraceClassVisitor(Opcodes.ASM9, nextClassVisitor, mTraceConfig)
+        return TraceClassVisitor(Opcodes.ASM9, nextClassVisitor, mTraceConfig!!)
     }
 
     private fun initConfig(configuration: TraceManParameter): Config {
@@ -33,7 +33,7 @@ abstract class TraceManTransform() : AsmClassVisitorFactory<TraceManParameter> {
                 project.getBuildDir().getAbsolutePath() + File.separator + "traceman_output"
             )
         }
-        val traceConfig = if (traceManConfig.open.get()) {
+        mTraceConfig = if (traceManConfig.open.get()) {
             val traceConfig = initConfig(traceManConfig)
             traceConfig.parseTraceConfigFile()
             traceConfig
